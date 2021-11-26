@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Optimal Placement</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+<script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
+<link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
+<style>
+  body { margin: 0; padding: 0; }
+  #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+</style>
+</head>
+<body>
+<div id="map"></div>
+<script>
+    var pointdata={
+      'type': 'FeatureCollection',
+      'features':
+      [
+        {
+          'type': 'Feature',
+          'geometry': {
+            'type': 'Point',
+            'coordinates': [-87.66399263098974,41.94623047728978]
+          },
+          'properties': {
+            'title': '3531 N Southport Ave'
+          }
+        },
+        {
+// feature for Mapbox SF
+          'type': 'Feature',
+          'geometry': {
+            'type': 'Point',
+            'coordinates': [-87.67463298866264,41.92749402246095]
+          },
+          'properties': {
+            'title': '2550 North Clybourn Avenue'
+          }
+        }
+      ]
+    }
+  // TO MAKE THE MAP APPEAR YOU MUST
+  // ADD YOUR ACCESS TOKEN FROM
+  // https://account.mapbox.com
+  mapboxgl.accessToken = "pk.eyJ1IjoicmljaGFyZHNvd2VycyIsImEiOiJjams5dnZtcWYya2RxM3FxcW03YzF0a2pzIn0._YTRBqzmI1sZnBONyEBr3A";
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/richardsowers/cjohs10mm1f9m2sltnluju4fm',
+        center: [-87.63,41.90],
+        zoom: 11.5,
+    });
+
+
+    map.on('load', function () {
+
+        map.addSource('points', {
+                'type': 'geojson',
+                'data': pointdata
+        });  
+        map.loadImage(
+          'https://docs.mapbox.com/mapbox-gl-js/assets/custom_marker.png',
+          function (error, image) {
+            if (error) throw error;
+            map.addImage('custom-marker', image);
+// Add a GeoJSON source with 2 points
+
+            map.addLayer({
+              'id': 'points',
+              'type': 'symbol',
+              'source': 'points',
+              'layout': {
+                'icon-image': 'custom-marker',
+    // get the title name from the source's "title" property
+                'text-field': ['get', 'title'],
+                'text-font': [
+                  'Open Sans Semibold',
+                  'Arial Unicode MS Bold'
+                ],
+                'text-offset': [0, 1.25],
+                'text-anchor': 'top'
+              },
+              "paint": {
+                "text-color": "#ffffff"
+              }
+            });
+          }
+        );
+    });
+</script>
+
+</body>
+</html>
