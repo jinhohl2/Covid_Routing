@@ -1,7 +1,6 @@
 ### Covid Routing ###
-by: Richard Sowers
-* author persistent email
-* author persistent webpage
+by: Jin Ho Lee
+* <jinhohl2@illinois.edu>
 
 Project director: Richard Sowers
 * <r-sowers@illinois.edu>
@@ -10,11 +9,9 @@ Project director: Richard Sowers
 Copyright 2019 University of Illinois Board of Trustees. All Rights Reserved. Licensed under the MIT license
 
 ### Explanation of repository:
-what is the point of the repository
+Analyze geographical and demographical data of Chicago urban area from Census. Find the best travel route of Covid-19 testing van to maximize the epimemilogical affect.
 
 ### File structure:  help the user out
-* file structure
-* how to run the code
 * covid_routing.ipynb
 	* Match geographic and demographic data of locations.
 	* Find driving distance among locations. 
@@ -29,7 +26,7 @@ what is the point of the repository
 		* Match the zip Code of the location to its geographic data (Latitude and Longitude)
 		* From Chicago Data Guy: http://robparal.blogspot.com/2013/07/chicago-community-area-and-zip-code.html 	
 	* ZipCode_Population.csv  
-		* Match the zip code od the location to the population.
+		* Match the zip code of the location to the population.
 		* From Chicago Data Portal: https://data.cityofchicago.org/Health-Human-Services/Chicago-Population-Counts/		85cm-7uqa
 	* all_140_in_17.P1.csv
 		* Dataset regarding the population of census blocks in Chicago
@@ -53,23 +50,6 @@ timezone-aware datetimes.
 
 The manuscript for this work is at <https://www.overleaf.com/project/5fb585e049231a413bc9a3bb>
 ___
-
-
-	This directory should/can be write-protected once the original data processing is one
-
-* **images** keep images here.  Label them
-* **analysis** keep any temporary .csv files here
-
-* pickler.ipnyb:  makes data/XYZ.p out of data/XYZ.csv
-* descriptive_statistics.ipynb: descriptive statistics of data/XYZ.p
-	* first several rows
-	* number of rows
-	* min and max dates
-	* min, max, mean, and stdev of relevant numerical columns
-	* number of unique values of categorical data
-	* plots of data to show
-		* normality
-		* correlatedness
 
 
 
